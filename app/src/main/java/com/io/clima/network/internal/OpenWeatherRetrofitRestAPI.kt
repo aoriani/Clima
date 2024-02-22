@@ -7,7 +7,7 @@ interface OpenWeatherRetrofitRestAPI {
 
     @GET("group")
     suspend fun fetchWeatherForCities(
-        @Query("id") cityIds: List<Long>,
+        @Query("id") cityIds: String,
         @Query("appid") apiKey: String
     ): Forecasts
 

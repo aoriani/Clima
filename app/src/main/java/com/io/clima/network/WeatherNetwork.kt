@@ -22,7 +22,16 @@ object WeatherNetwork {
 
     suspend fun fetchWeatherForCities(): List<Weather> {
         return service.fetchWeatherForCities(
-            listOf(5391749, 4684904, 3453643, 4219762, 2643743, 2988507, 1277333, 2692969), apiKey
+            listOf(
+                5391749,
+                4684904,
+                3453643,
+                4219762,
+                2643743,
+                2988507,
+                1277333,
+                2692969
+            ).joinToString(separator = ","), apiKey
         ).list.map { it.toWeather() }
     }
 

@@ -1,7 +1,10 @@
 package com.io.clima.network
 
+import android.os.Parcelable
 import com.io.clima.network.internal.Forecast
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Weather(
     val id: Long,
     val name: String,
@@ -11,7 +14,7 @@ data class Weather(
     val minTemperature: Double,
     val maxTemperature: Double,
     val humidity: Int
-) {
+) : Parcelable {
     enum class Condition {
         Thunderstorm,
         Drizzle,
@@ -22,7 +25,7 @@ data class Weather(
         Haze,
         Fog,
         Tornado,
-        Clear,
+        Sunny,
         Cloudy,
         Other
     }
@@ -38,7 +41,7 @@ private fun Int.toCondition(): Weather.Condition = when (this) {
     721 -> Weather.Condition.Haze
     741 -> Weather.Condition.Fog
     781 -> Weather.Condition.Tornado
-    800 -> Weather.Condition.Clear
+    800 -> Weather.Condition.Sunny
     in 801..804 -> Weather.Condition.Cloudy
     else -> Weather.Condition.Other
 }
